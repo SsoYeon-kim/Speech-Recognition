@@ -149,7 +149,7 @@ Ex) A, B, C 세 종류의 정규분포의 PDF(확률밀도함수)를 보면 GMM�
 [MLE(Maximum Likelihood Estimation, 최대우도법)]
 - 파라미터 θ=(θ1,⋯,θm)으로 구성된 어떤 확률밀도함수 P(x | θ)에서 관측된 표본 데이터 집합을 x=(x1,x2,⋯,xn)이라고 할 때, 이 표본들에서 파라미터 θ=(θ1,⋯,θm)를 추정하는 방법   
    
-<img src="https://user-images.githubusercontent.com/62587484/158985287-f6ef7f92-9431-48b5-9526-c46fbe4b056e.png" width="100%">   
+<img src="https://user-images.githubusercontent.com/62587484/158985287-f6ef7f92-9431-48b5-9526-c46fbe4b056e.png" width="70%">   
    
 위 사진에서 데이터를 관찰함으로써 이 데이터가 추출되었을 것으로 생각되는 분포의 특성을 추정할 수 있음   
 (추출된 분포가 정규분포라 가정, 분포의 특성 중 평균을 추정하려 함)   
@@ -158,11 +158,11 @@ Ex) A, B, C 세 종류의 정규분포의 PDF(확률밀도함수)를 보면 GMM�
    
 Likelihood function : 전체 표본집합의 결합확률밀도함수   
 
-<img src="https://user-images.githubusercontent.com/62587484/158985465-9c78cb3a-cd7f-4d3f-b55f-d134ba0e8466.png" width="100%">   
+<img src="https://user-images.githubusercontent.com/62587484/158985465-9c78cb3a-cd7f-4d3f-b55f-d134ba0e8466.png" width="50%">   
    
 보통, 자연로그를 이용해 log-likelihood function L(θ | x)를 이용   
 
-<img src="https://user-images.githubusercontent.com/62587484/158985552-f4985e8d-0f05-4689-b30c-02c298f92067.png" width="100%">   
+<img src="https://user-images.githubusercontent.com/62587484/158985552-f4985e8d-0f05-4689-b30c-02c298f92067.png" width="50%">   
    
 MLE는 likelihood 함수의 최대값을 찾는 방법   
 - 미분계수를 이용해 최대값을 구함   
@@ -170,12 +170,12 @@ MLE는 likelihood 함수의 최대값을 찾는 방법
 - 데이터에 대해 정규분포를 가정했을 때, 주어진 m개의 데이터에 대한 두 파라미터(평균, 분산)에 대한 MLE는 주어진 데이터를 {x(1), x(2), ..., x(m)}이라고 했을 때 평균, 분산 값을 계산할 때 likelihood 함수가 최대가 된다.   
 (아래 수식은 주어진 데이터에 대한 likelihood를 계산한 후, likelihood가 최대가 되게 하는 평균과 분산 값을 얻은 결과)   
 
-<img src="https://user-images.githubusercontent.com/62587484/158985729-c1664e79-403b-469c-9233-afb4f535ca06.png" width="100%">   
+<img src="https://user-images.githubusercontent.com/62587484/158985729-c1664e79-403b-469c-9233-afb4f535ca06.png" width="50%">   
    
 아래 사진 처럼 데이터 라벨이 주어지지 않은 경우
 - 랜덤하게 라벨 or 분포를 설정해주고 시작 (여기서는 각 라벨이 해당하는 분포를 랜덤하게 주고 시작)
    
-<img src="https://user-images.githubusercontent.com/62587484/158985784-0ecf3161-eb4a-4b28-ac51-5542c082a206.png" width="100%">  
+<img src="https://user-images.githubusercontent.com/62587484/158985784-0ecf3161-eb4a-4b28-ac51-5542c082a206.png" width="50%">  
    
 아래의 방식으로 모든 데이터 샘플들에 대한 라벨을 확인하면 분포는 수렴함
 1. 랜덤하게 분포 제안
@@ -183,7 +183,7 @@ MLE는 likelihood 함수의 최대값을 찾는 방법
 3. 각 그룹별 모수 추정
 4. 추정된 모수를 이용한 각 그룹별 분포 도시
    
-<img src="https://user-images.githubusercontent.com/62587484/158985956-29d773fb-64fc-41c8-92d7-4848efc0b568.png" width="100%">  
+<img src="https://user-images.githubusercontent.com/62587484/158985956-29d773fb-64fc-41c8-92d7-4848efc0b568.png" width="50%">  
    
 => 라벨이 주어지지 않은 데이터에 대해 데이터셋은 정규분포를 이룰 것이라 가정하고 클러스터링을 수행해주는 과정을 GMM이라고 함
    
@@ -204,7 +204,7 @@ MLE는 likelihood 함수의 최대값을 찾는 방법
 - DNN의 학습 과정
 	- HMM 학습 결과로 이미 결정되는 상태(state) 및 훈련 음성 데이터의 상태 레벨 정렬 정보를 전달받아, 단순히 패턴 인식 측면에서 가장 변별력이 있는 형태의 특징 및 모델 파라미터를 얻는 과정
    
-<img src="https://user-images.githubusercontent.com/62587484/158986281-e5a9126e-ad48-41e1-b947-b4d7ac2fa0dd.png" width="100%">   
+<img src="https://user-images.githubusercontent.com/62587484/158986281-e5a9126e-ad48-41e1-b947-b4d7ac2fa0dd.png" width="80%">   
    
 ## 7. TDNN(Time Delay Neural Network)   
    
@@ -214,7 +214,7 @@ MLE는 likelihood 함수의 최대값을 찾는 방법
 - 음성과 같은 동적인 패턴을 다루기 위해 지연요소, 시간적으로 처리하는 요소 등을 이용해 입력 패턴에 내재되어 있는 시간적인 특징을 인식하는 신경망
 - 시간 차원을 따라 가중치를 공유하는 네트워크
    
-<img src="https://user-images.githubusercontent.com/62587484/158986443-8b7ca260-6bbb-48c3-9ccc-b1de651c9050.png" width="100%">  
+<img src="https://user-images.githubusercontent.com/62587484/158986443-8b7ca260-6bbb-48c3-9ccc-b1de651c9050.png" width="50%">  
    
 - 학습 알고리즘
 	- 오류역전파(back propagation)학습 알고리즘 이용 (경사 하강법을 사용해 MSE가 최소가 되도록 연결강도를 조정하는 학습법)
@@ -225,7 +225,7 @@ MLE는 likelihood 함수의 최대값을 찾는 방법
    
 아래 사진은 ‘ㅂ’, ‘ㄷ’, ‘ㄱ’ 세 개의 음소를 인식하는 TDNN의 전체 구조를 나타냄   
    
-<img src="https://user-images.githubusercontent.com/62587484/158986536-4ac34775-3d0c-45c1-beed-2629cdfd2215.png" width="100%">   
+<img src="https://user-images.githubusercontent.com/62587484/158986536-4ac34775-3d0c-45c1-beed-2629cdfd2215.png" width="50%">   
    
 - 두 은닉층의 각 노드 열은 앞 노드 열을 그대로 복제한 형상
 - 은닉층에서 같은 행에 위치한 노드들은 동일한 weight 집합을 가지게 됨 (= 한 행에서 서로 대응되는 위치에 놓인 connection들은 같은 weight를 가짐)
