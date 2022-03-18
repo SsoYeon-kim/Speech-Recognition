@@ -111,7 +111,7 @@ Solution : Baum-Welch algorithm (= forward-backward algorithm)
    - M-step : γt(i), ξt(i,j)를 이용해 HMM(λ)를 개선 -> HMM(λnew)
       -  개선 : P(HMM(λnew)) > P(O | HMM(λ))   즉, HMM(λnew)의 evaluation시 높은 확률   
    
-#### 음향모델에서의 사용   
+#### [음향모델에서의 사용]   
    
 - 음향모델에서의 사용
    - 음소의 연쇄가 드러나지 않아 오디오 파형같이 보이는 대체물을 이용해 간접적으로 훈련
@@ -122,7 +122,113 @@ Solution : Baum-Welch algorithm (= forward-backward algorithm)
 Ex) ‘t’ 파형의 처음, 중간, 마지막 상태로 음소의 동일성은 유지하되, 구간을 나눠 음소의 복잡한 특징을 상태별로 담을 수 있도록 마르코프 체인을 구성하여 학습을 진행.
 이때, 학습하고자 하는 음소의 상태는 hidden영역, 볼 수 있는 오디오는 observation 영역   
    
-## GMM(Gaussian Mixture Model)   
+## 5.GMM(Gaussian Mixture Model)   
    
+- clustering 방법 중 하나로 데이터의 군집을 가우시안 모델로 표현하는 기법
+- 가우시안 모델의 평균(μ)과 분산(σ^2)으로부터 군집의 특성을 알 수 있음
 
+#### [Mixture Model]
+- 전체 분포에서 하위 분포가 존재한다고 보는 모델
+- 데이터가 모수를 갖는 여러 개의 분포로부터 생성되었다고 가정하는 모델
+   
+가장 많이 사용되는 GMM은 데이터가 k개의 정규분포로부터 생성되었다고 보는 모델   
+   
+Ex) A, B, C 세 종류의 정규분포의 PDF(확률밀도함수)를 보면 GMM은 세 가지 정규분포 중 하나로부터 생성되었으며, 그 안에서 random하게 정규분포 형태를 갖고 생성되었다고 보는 모델   
+
+<img src="https://user-images.githubusercontent.com/62587484/158985051-6c2ba676-eea1-400b-82a7-0dc9ab2370a6.png" width="50%"><img src="https://user-images.githubusercontent.com/62587484/158985082-27664e21-3123-406d-95d1-aed5256e760f.png" width="50%">   
+   
+위 사진을 보고
+- 3개의 정규분포의 평균과 분산을 어느정도 짐작할 수 있음
+- 각각의 분포로부터 생성되는 데이터의 양이 차이가 있다는 것을 알 수 있음   
+=> 3개의 분포의 평균과 모수, Weight | 총 9개의 모수를 통해 데이터의 분포를 설명할 수 있는 혼합 PDF를 만들어낼 수 있음
+    
+#### [모수 추정]
+- 세 가지 정규분포 중 확률적으로 어디에 속해 있는가를 나타내는 Weight값 : 잠재변수
+- 각각의 정규분포의 모수(평균, 분산)   
+   
+[MLE(Maximum Likelihood Estimation, 최대우도법)]
+- 파라미터 θ=(θ1,⋯,θm)으로 구성된 어떤 확률밀도함수 P(x | θ)에서 관측된 표본 데이터 집합을 x=(x1,x2,⋯,xn)이라고 할 때, 이 표본들에서 파라미터 θ=(θ1,⋯,θm)를 추정하는 방법   
+   
+<img src="https://user-images.githubusercontent.com/62587484/158985287-f6ef7f92-9431-48b5-9526-c46fbe4b056e.png" width="100%">   
+   
+위 사진에서 데이터를 관찰함으로써 이 데이터가 추출되었을 것으로 생각되는 분포의 특성을 추정할 수 있음   
+(추출된 분포가 정규분포라 가정, 분포의 특성 중 평균을 추정하려 함)   
+   
+*likelihood : 지금 얻은 데이터가 이 분포로부터 나왔을 가능도, 각 데이터 샘플에서 후보 분포에 대한 높이   
+   
+Likelihood function : 전체 표본집합의 결합확률밀도함수   
+
+<img src="https://user-images.githubusercontent.com/62587484/158985465-9c78cb3a-cd7f-4d3f-b55f-d134ba0e8466.png" width="100%">   
+   
+보통, 자연로그를 이용해 log-likelihood function L(θ | x)를 이용   
+
+<img src="https://user-images.githubusercontent.com/62587484/158985552-f4985e8d-0f05-4689-b30c-02c298f92067.png" width="100%">   
+   
+MLE는 likelihood 함수의 최대값을 찾는 방법   
+- 미분계수를 이용해 최대값을 구함   
+   
+- 데이터에 대해 정규분포를 가정했을 때, 주어진 m개의 데이터에 대한 두 파라미터(평균, 분산)에 대한 MLE는 주어진 데이터를 {x(1), x(2), ..., x(m)}이라고 했을 때 평균, 분산 값을 계산할 때 likelihood 함수가 최대가 된다.   
+(아래 수식은 주어진 데이터에 대한 likelihood를 계산한 후, likelihood가 최대가 되게 하는 평균과 분산 값을 얻은 결과)   
+
+<img src="https://user-images.githubusercontent.com/62587484/158985729-c1664e79-403b-469c-9233-afb4f535ca06.png" width="100%">   
+   
+아래 사진 처럼 데이터 라벨이 주어지지 않은 경우
+- 랜덤하게 라벨 or 분포를 설정해주고 시작 (여기서는 각 라벨이 해당하는 분포를 랜덤하게 주고 시작)
+   
+<img src="https://user-images.githubusercontent.com/62587484/158985784-0ecf3161-eb4a-4b28-ac51-5542c082a206.png" width="100%">  
+   
+아래의 방식으로 모든 데이터 샘플들에 대한 라벨을 확인하면 분포는 수렴함
+1. 랜덤하게 분포 제안
+2. likelihood 비교로 라벨링
+3. 각 그룹별 모수 추정
+4. 추정된 모수를 이용한 각 그룹별 분포 도시
+   
+<img src="https://user-images.githubusercontent.com/62587484/158985956-29d773fb-64fc-41c8-92d7-4848efc0b568.png" width="100%">  
+   
+=> 라벨이 주어지지 않은 데이터에 대해 데이터셋은 정규분포를 이룰 것이라 가정하고 클러스터링을 수행해주는 과정을 GMM이라고 함
+   
+#### E-M알고리즘(Expectation-Maximization)]
+- 두 가지 step을 번갈아 가며 진행
+	- E-step : 각 데이터에 라벨을 부여하는 과정
+	- M-step : 각 그룹의 모수를 재 계산하는 과정 (평균, 표준편차 계산)
+   
+## 6. DNN-HMM   
+   
+- GMM모델을 DNN으로 대체한 시스템
+- 입력으로 주어지는 특징 벡터에 대해 발음 사전에 정의된 음소 중, 가장 높은 확률을 가지는
+음소를 출력하는 분류과정을 수행
+
+1. HMM 학습 과정을 통해 DNN 구조의 출력 노드 또는 타겟에 해당하는 HMM의 상태를 결정
+2. 훈련 음성 데이터의 상태 레벨 정렬 정보(state-level alignment)를 추출
+
+- DNN의 학습 과정
+	- HMM 학습 결과로 이미 결정되는 상태(state) 및 훈련 음성 데이터의 상태 레벨 정렬 정보를 전달받아, 단순히 패턴 인식 측면에서 가장 변별력이 있는 형태의 특징 및 모델 파라미터를 얻는 과정
+   
+<img src="https://user-images.githubusercontent.com/62587484/158986281-e5a9126e-ad48-41e1-b947-b4d7ac2fa0dd.png" width="100%">   
+   
+## 7. TDNN(Time Delay Neural Network)   
+   
+- input 데이터로 시간에 대해 (t, t-1, t-2)인 데이터를 한 번에 넣는 방법(시간을 고려한 모델이 아닌 데에 discrete한 시간 데이터를 다룰 때 쓰는 대표적인 방법)
+- 연속적인 시간 데이터의 경우는 위 방법을 사용할 수 없음
+	-  sliding window 방식으로 일정한 길이의 데이터를 일정 부분 겹치도록 전처리한 뒤 사용
+- 음성과 같은 동적인 패턴을 다루기 위해 지연요소, 시간적으로 처리하는 요소 등을 이용해 입력 패턴에 내재되어 있는 시간적인 특징을 인식하는 신경망
+- 시간 차원을 따라 가중치를 공유하는 네트워크
+   
+<img src="https://user-images.githubusercontent.com/62587484/158986443-8b7ca260-6bbb-48c3-9ccc-b1de651c9050.png" width="100%">  
+   
+- 학습 알고리즘
+	- 오류역전파(back propagation)학습 알고리즘 이용 (경사 하강법을 사용해 MSE가 최소가 되도록 연결강도를 조정하는 학습법)
+
+1. 각 time-shifted window에 대한 weight들은 서로 같도록 제한
+2. 우선 각각의 time-shifted window들에 대해 BP알고리즘을 적용해 weights의 변화량을 계산
+3. 그 변화량들의 평균값으로 각 weight를 조정
+   
+아래 사진은 ‘ㅂ’, ‘ㄷ’, ‘ㄱ’ 세 개의 음소를 인식하는 TDNN의 전체 구조를 나타냄   
+   
+<img src="https://user-images.githubusercontent.com/62587484/158986536-4ac34775-3d0c-45c1-beed-2629cdfd2215.png" width="100%">   
+   
+- 두 은닉층의 각 노드 열은 앞 노드 열을 그대로 복제한 형상
+- 은닉층에서 같은 행에 위치한 노드들은 동일한 weight 집합을 가지게 됨 (= 한 행에서 서로 대응되는 위치에 놓인 connection들은 같은 weight를 가짐)
+- 하나의 TDNN으로 음소 전체를 인식케 하는 것은 학습에 소요되는 시간이나 질을 따져볼 때
+바람직하지 않음 (음소를 여러 그룹으로 묶고 그 그룹 수만큼 TDNN을 둬 각 TDNN이 담당 그룹만을 전문적으로 인식케 하는 다중 인식기 구조가 흔히 사용됨)
 
