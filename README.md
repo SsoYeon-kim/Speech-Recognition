@@ -79,13 +79,13 @@ O(testing sequence data)를 만들어 놓은 모델을 통해
    - Backward algorithm (<- 방향으로 확률 계산) 		: β
    - Probability_Forward(O) = Probability_Backward(O)   
 
-<img src="https://user-images.githubusercontent.com/62587484/158984177-2aff66f0-d900-44cc-b34a-ed235a54d843.png" width="100%">   
+<img src="https://user-images.githubusercontent.com/62587484/158984177-2aff66f0-d900-44cc-b34a-ed235a54d843.png" width="50%">   
    
 #### [Decoding]   
    
 - solution : Viterbi algorithm
 
-<img src="https://user-images.githubusercontent.com/62587484/158984315-7cf3f7ab-74b8-4134-8dd7-d34e413700ce.png" width="50%"><img src="https://user-images.githubusercontent.com/62587484/158984341-529b3ebf-97a1-4181-8002-170042c3547b.png" width="50%">   
+<img src="https://user-images.githubusercontent.com/62587484/158984315-7cf3f7ab-74b8-4134-8dd7-d34e413700ce.png" width="70%"><img src="https://user-images.githubusercontent.com/62587484/158984341-529b3ebf-97a1-4181-8002-170042c3547b.png" width="30%">   
    
 Forward algorithm for evaluation : 가능한 모든 경우의 확률의 합   
 Viterbi algorithm for decoding : 가능한 모든 경우의 확률의 최대   
