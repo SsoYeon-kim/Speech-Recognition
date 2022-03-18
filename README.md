@@ -225,7 +225,7 @@ MLE는 likelihood 함수의 최대값을 찾는 방법
    
 아래 사진은 ‘ㅂ’, ‘ㄷ’, ‘ㄱ’ 세 개의 음소를 인식하는 TDNN의 전체 구조를 나타냄   
    
-<img src="https://user-images.githubusercontent.com/62587484/158986536-4ac34775-3d0c-45c1-beed-2629cdfd2215.png" width="30%">   
+<img src="https://user-images.githubusercontent.com/62587484/158986536-4ac34775-3d0c-45c1-beed-2629cdfd2215.png" width="40%">   
    
 - 두 은닉층의 각 노드 열은 앞 노드 열을 그대로 복제한 형상
 - 은닉층에서 같은 행에 위치한 노드들은 동일한 weight 집합을 가지게 됨 (= 한 행에서 서로 대응되는 위치에 놓인 connection들은 같은 weight를 가짐)
