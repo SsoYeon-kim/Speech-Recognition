@@ -170,7 +170,7 @@ MLE는 likelihood 함수의 최대값을 찾는 방법
 - 데이터에 대해 정규분포를 가정했을 때, 주어진 m개의 데이터에 대한 두 파라미터(평균, 분산)에 대한 MLE는 주어진 데이터를 {x(1), x(2), ..., x(m)}이라고 했을 때 평균, 분산 값을 계산할 때 likelihood 함수가 최대가 된다.   
 (아래 수식은 주어진 데이터에 대한 likelihood를 계산한 후, likelihood가 최대가 되게 하는 평균과 분산 값을 얻은 결과)   
 
-<img src="https://user-images.githubusercontent.com/62587484/158985729-c1664e79-403b-469c-9233-afb4f535ca06.png" width="50%">   
+<img src="https://user-images.githubusercontent.com/62587484/158985729-c1664e79-403b-469c-9233-afb4f535ca06.png" width="30%">   
    
 아래 사진 처럼 데이터 라벨이 주어지지 않은 경우
 - 랜덤하게 라벨 or 분포를 설정해주고 시작 (여기서는 각 라벨이 해당하는 분포를 랜덤하게 주고 시작)
@@ -225,7 +225,7 @@ MLE는 likelihood 함수의 최대값을 찾는 방법
    
 아래 사진은 ‘ㅂ’, ‘ㄷ’, ‘ㄱ’ 세 개의 음소를 인식하는 TDNN의 전체 구조를 나타냄   
    
-<img src="https://user-images.githubusercontent.com/62587484/158986536-4ac34775-3d0c-45c1-beed-2629cdfd2215.png" width="50%">   
+<img src="https://user-images.githubusercontent.com/62587484/158986536-4ac34775-3d0c-45c1-beed-2629cdfd2215.png" width="30%">   
    
 - 두 은닉층의 각 노드 열은 앞 노드 열을 그대로 복제한 형상
 - 은닉층에서 같은 행에 위치한 노드들은 동일한 weight 집합을 가지게 됨 (= 한 행에서 서로 대응되는 위치에 놓인 connection들은 같은 weight를 가짐)
